@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<HTML>
+<head>
+<style>
+	h1{
+		color: white;
+	}
+	body{
+		background-image: url('http://www.hdwallsource.com/img/2014/4/free-background-wallpaper-22918-23554-hd-wallpapers.jpg');
+		color: white;
+	}
+</style>
+<center><h1 id="title">What famous artist created this painting?</h1>
+<img src="http://cache.desktopnexus.com/thumbnails/509422-bigthumbnail.jpg" alt="Clock painting">
+<p> </p>
+<input type="text" id="myTextField"/>
+<input type="submit" id="byBtn" value="Enter name" onclick="check()"/></center>
+
+</head>
+
+<body>
+<font size =5><center><p id="demo"></p></center></font>
+<script>
+
+function check(){
+    
+   var myNewTitle = document.getElementById('myTextField').value;
+   var correct_name = "Salvador Dali";
+      
+   if( myNewTitle.length==0 ){
+       alert('Write Some real Text please.');
+   return;
+   }
+   
+   var title = document.getElementById('title');
+      
+   if(myNewTitle == correct_name)
+   { 
+       document.getElementById("demo").innerHTML = "Correct! Well done!";
+   }
+   else
+   {
+      alert('Im sorry, that is not correct. Please try again.');
+   }
+}
+</script>
+</body>
+
+</HTML>
