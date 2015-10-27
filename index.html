@@ -575,6 +575,10 @@
         gate3.y = gate3.y + gate3.rate;
 
         tempAPI.update(player.lives);
+		
+		player.lives.push('L');
+		
+		tempAPI.update(player.lives);
 
         if (rightPressed && ball.x + ball.radius < canvas.width) {
             ball.x += 4;
