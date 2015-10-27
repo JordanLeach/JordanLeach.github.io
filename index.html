@@ -588,6 +588,19 @@
 
     requestAnimationFrame(draw);
 
+	//V on mouse move function V
+	//this function is called anytime the mouse moves on the screen and updates the ballx variable
+	//the coordinates are returned relative to the top left of the screen so we need to use the canvas bounds to adjust them.
+	//lastly, this function checks to make sure the position is inside the canvas. it will not change the coordinates if it is not
+	
+	$(document).on("mousemove", function (event) {
+	var rect = canvas.getBoundingClientRect();
+	if((event.clientX - rect.left) - ball.radius > 0 && (event.clientX - rect.left) + ball.radius < canvas.width && (event.clientY - rect.top) > 0 && (event.clientY - rect.top) < canvas.height){
+	 ball.x = event.clientX - rect.left;
+	}
+});
+	
+
 
 </script>
 
