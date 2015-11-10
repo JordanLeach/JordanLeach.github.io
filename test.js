@@ -13,12 +13,14 @@ function test(){
 //********************************* SUB-OBJECT ARRAY *********************************
     function array(){
         //********************************* ARRAY PROPERTIES *********************************
-        this.data = [];			//The array to be visualized
+        this.data = [];				//The array to be visualized
         this.indexWidth = null;		//Width of each index visually
         this.indexHeight = null;    //Height of each index visually
 		this.plane = "horizontal";  //By default the array is displayed horizontally
 		this.y = null;				
 		this.x = null;
+		this.indexColor = "white"; 	//Default color is white
+		this.textColor = "black";   //Default color is black
 
         //********************************* ARRAY FUNCTIONS *********************************
         //Stores the passed array (A) as the data for the object
@@ -39,31 +41,32 @@ function test(){
 		this.setPlane = function(p){
 			this.plane = p;
 		}
+		//Stores the color to be used as the background for each rectangle
+		this.setIndexColor = function(color){
+			this.indexColor = color;
+		}
+		
+		this.setTextColor = function(color){
+			this.textColor = color;
+		}
+	
     } //End of Array Object
 
 
 
     function speed(){
-
-        var width = $("body").width();
-        var height = $("body").height();
-        console.log("in speed constructor" + width + " " + height);
-
-        var pos = [{"x":100,"y":20}, {"x":200,"y":20},{"x":300,"y":20}];
-        pos[0].x = width / 6; pos[1].x = width / 3; pos[2].x = width / 2;
-
-        this.data  = pos;
-        this.pos0 = []; this.pos0.push(pos[0]);
-        this.pos1 = []; this.pos1.push(pos[1]);
-        this.pos2 = []; this.pos2.push(pos[2]);
-        this.speed0 = 0;
         this.speed1 = 0;
         this.speed2 = 0;
-        this.length = 1;
+        this.speed3 = 0;
+        this.div1 = document.getElementById('rate1Div');
+        this.div2 = document.getElementById('rate2Div');
+        this.div3 = document.getElementById('rate3Div');
 
-        this.data = function(pos) {
-            this.data = pos;
 
+        this.data = function(rate) {
+            this.speed1 = rate.rate1;
+            this.speed2 = rate.rate2;
+            this.speed3 = rate.rate3;
         }
 
     }
@@ -97,7 +100,12 @@ function test(){
     this.data = function(x){
 		if(this.dataStructureName == "array"){
 			this.dataStructure.data = x.slice(0, x.length);		//The extra .data is an ARRAY OBJECT PROPERTY because this.dataStructure is an ARRAY OBJECT itself.
-		}
+		} else if (this.dataStructureName == "speed") {
+            this.dataStructure.speed1 = x.rate1;
+            this.dataStructure.speed2 = x.rate2;
+            this.dataStructure.speed3 = x.rate3;
+
+        }
         return this;
     }
 
@@ -126,15 +134,15 @@ function test(){
             	this.data(_data);							//Store the new data into the API object
             	this.canvas.selectAll("rect").remove();		//Removes the old SVG rectangles
             	this.canvas.selectAll("text").remove();		//Removes the old data from the screen
-            	d3.select("#canvasID").remove();			//Delete the canvas: NOTE THIS USES THE ID (canvasID) FOR THE CANVAS MADE IN THE VISUALIZE FUNCTION
+            	d3.select("#canvasArray").remove();			//Delete the canvas: NOTE THIS USES THE ID (canvasID) FOR THE CANVAS MADE IN THE VISUALIZE FUNCTION
             	this.visualize();							//visualizes the updated structure
             }
         } else if (this.dataStructureName == "speed") {
-            this.data = _data;
+			d3.select("#canvasSpeed").remove();
+            this.dataStructure.speed1 = _data.rate1;
+            this.dataStructure.speed2 = _data.rate2;
+            this.dataStructure.speed3 = _data.rate3;
 
-            this.canvas.selectAll("path").remove();
-            this.canvas.selectAll("g").remove();
-            d3.select("#canvasID").remove();
             this.visualize();
 
         }
@@ -144,118 +152,105 @@ function test(){
     //Function to construct the visualization
     this.visualize = function(){
 
-        this.canvas = d3.select(this.canvasLocation)		//Finds the specified location of the HTML file and appends a "canvas" to it
-            .append("svg")
-            .attr("id", "canvasID")
-            .attr("width", this.locationWidth)
-            .attr("height", this.locationHeight);
-
-        console.log("in visualize 2) size of canvas: " + this.locationWidth + " " + this.locationHeight);
-
         //***************************************************VISUALIZES AN ARRAY. MORE STRUCTURES CAN/SHOULD BE ADDED TO THIS FUNCTION***************************************************
         if(this.dataStructureName == "array"){
+			this.canvas = d3.select(this.canvasLocation)		//Finds the specified location of the HTML file and appends a "canvas" to it
+            .append("svg")
+            .attr("id", "canvasArray")
+            .attr("width", this.locationWidth)
+            .attr("height", this.locationHeight);
             
+
 			visualizeArray(this); //Moved the visulization code to non-member function to reduce some clutter
 
         } //End of  if dataStructure == array
         else if (this.dataStructureName == "speed") {
+			this.canvas = d3.select(this.canvasLocation)		//Finds the specified location of the HTML file and appends a "canvas" to it
+            .append("svg")
+            .attr("id", "canvasSpeed")
+            .attr("width", this.locationWidth)
+            .attr("height", this.locationHeight);
+			
+            var div1 = this.dataStructure.div1;
+            var div2 = this.dataStructure.div2;
+            var div3 = this.dataStructure.div3;
 
-            this.canvas.attr("height", this.locationWidth);
-            this.locationHeight = this.locationWidth;
-            console.log("in visualize: 3) size of canvas: " + this.locationWidth + " " + this.locationHeight);
+            div1.style.backgroundColor = 'green';
+            div2.style.backgroundColor = 'yellow';
+            div3.style.backgroundColor = 'pink';
 
+            var vec1 = this.dataStructure.speed1;
+            var vec2 = this.dataStructure.speed2;
+            var vec3 = this.dataStructure.speed3;
 
-            //console.log("size of data: " + this.dataStructure.data.length);
-            //This is the accessor function we talked about above
-            var lineFunction = d3.svg.line()
-                .x(function(d) { return d.x; })
-                .y(function(d) { return d.y; })
-                .interpolate("linear");
+            //console.log("in visualize: rates: " + vec1 + " " + vec2 + " " + vec3);
 
-            ////////////////////////////////////////////////
-            var x = d3.scale.linear()
-                .range([0, this.locationWidth]);
+            switch(vec1) {
+                case 1:
+                    div1.style.backgroundColor = 'green';
+                    break;
+                case 2:
+                    div1.style.backgroundColor = 'blue';
+                    break;
+                case 3:
+                    div1.style.backgroundColor = 'yellow';
+                    break;
+                case 4:
+                    div1.style.backgroundColor = 'pink';
+                    break;
+                case 5:
+                    div1.style.backgroundColor = 'red';
+                    break;
+                default:
+                    div1.style.backgroundColor = 'white';
+                    break;
 
-            var y = d3.scale.linear()
-                .range([0, this.locationHeight]);
-
-            var xAxis = d3.svg.axis()
-                .scale(x)
-                .orient("bottom");
-
-            var yAxis = d3.svg.axis()
-                .scale(y)
-                .orient("left");
-
-            //x.domain(d3.extent(this.dataStructure.data, function(d) {
-            //    return d.x;
-            //}));
-            //y.domain(d3.extent(this.dataStructure.data, function(d) {
-            //    return d.y;
-            //}));
-
-            x.domain(d3.extent(this.locationWidth));
-            y.domain(d3.extent(this.locationHeight));
-
-
-            ////////////////////////////////
-            this.dataStructure.pos0.push(this.dataStructure.data[0]);
-            this.dataStructure.pos1.push(this.dataStructure.data[1]);
-            this.dataStructure.pos2.push(this.dataStructure.data[2]);
-            this.dataStructure.length = this.dataStructure.pos0.length;
-            var len = this.dataStructure.length;
-            if (this.dataStructure.length > 1) {
-                console.log("set speed..." + this.dataStructure.length + " " + len + " size of pos0 " + this.dataStructure.pos0.length);
-                console.log("pos0 y1 y2 " + (this.dataStructure.pos0[len - 1]).y + " " + (this.dataStructure.pos0[len - 2]).y);
-                this.dataStructure.speed0 = (this.dataStructure.pos0[len - 1]).y - (this.dataStructure.pos0[len - 2]).y;
-                this.dataStructure.speed1 = this.dataStructure.pos1[this.dataStructure.length - 1].y - this.dataStructure.pos1[this.dataStructure.length - 2].y;
-                this.dataStructure.speed2 = this.dataStructure.pos2[this.dataStructure.length - 1].y - this.dataStructure.pos2[this.dataStructure.length - 2].y;
             }
-            ////////////////////////////////
-            console.log("this.dataStructure.pos1 " + this.dataStructure.pos1[this.dataStructure.length - 1].x +
-                " " + this.dataStructure.pos1[this.dataStructure.length - 1].y);
-            console.log("this.dataStructure.speed0 " + this.dataStructure.speed0);
 
-            //The line SVG Path we draw
-            var graph = this.canvas;
-            graph.append("g")
-                 .attr("transform", "translate(" + 20 + "," + 20 + ")");
+            switch(vec2) {
+                case 1:
+                    div2.style.backgroundColor = 'green';
+                    break;
+                case 2:
+                    div2.style.backgroundColor = 'blue';
+                    break;
+                case 3:
+                    div2.style.backgroundColor = 'yellow';
+                    break;
+                case 4:
+                    div2.style.backgroundColor = 'pink';
+                    break;
+                case 5:
+                    div2.style.backgroundColor = 'red';
+                    break;
+                default:
+                    div2.style.backgroundColor = 'white';
+                    break;
 
-            graph.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + this.locationHeight - 20 + ")")
-                .call(xAxis);
+            }
 
-            graph.append("g")
-                .attr("class", "y axis")
-                .call(yAxis);
+            switch(vec3) {
+                case 1:
+                    div3.style.backgroundColor = 'green';
+                    break;
+                case 2:
+                    div3.style.backgroundColor = 'blue';
+                    break;
+                case 3:
+                    div3.style.backgroundColor = 'yellow';
+                    break;
+                case 4:
+                    div3.style.backgroundColor = 'pink';
+                    break;
+                case 5:
+                    div3.style.backgroundColor = 'red';
+                    break;
+                default:
+                    div3.style.backgroundColor = 'white';
+                    break;
 
-            graph.append("path")
-                .attr("d", lineFunction(this.dataStructure.pos0))
-                .attr("stroke", "blue")
-                .attr("stroke-width", 2)
-                .attr("fill", "none");
-
-            graph.append("path")
-                .attr("d", lineFunction(this.dataStructure.pos1))
-                .attr("stroke", "blue")
-                .attr("stroke-width", 2)
-                .attr("fill", "none");
-
-            graph.append("path")
-                .attr("d", lineFunction(this.dataStructure.pos2))
-                .attr("stroke", "blue")
-                .attr("stroke-width", 2)
-                .attr("fill", "none");
-
-
-            //graph.append("text")
-            //    .text(this.dataStructure.speed0)
-            //    .attr("class", "wrap")
-            //    .attr("y", 50)
-            //    .attr("x", 900)
-            //    //.attr("id", "rectWrap" + i)
-            //    .attr("text-anchor", "middle");
+            }
+            //
 
 
         }
@@ -266,6 +261,7 @@ function test(){
 	this.attr = function(keyword1, keyword2){
 		if(this.dataStructureName == "array")	//Looking at attributes for visualizations of arrays
 		{
+			//Attribute to change which plane the visualization occurs on
 			if(keyword1 == "plane" || keyword1 == "Plane")
 			{
 				if(keyword2 == "vertical" || keyword2 == "Vertical" || keyword2 == "Horizontal" || keyword2 == "horizontal")
@@ -277,7 +273,21 @@ function test(){
 					console.log(keyword2 + " does not match the attribute " + keyword1);
 				}
 			}//End of keyword1 == plane
+			
+			//Attribute to change the color of each index of the array
+			if(keyword1 == "index-color" || keyword1 == "Index-Color" || keyword1 == "index-Color" || keyword1 == "Index-color")
+			{
+				this.dataStructure.setIndexColor(keyword2);
+			}
+			
+			//Attribute to change the color of the text (data) shown in each index of the array
+			if(keyword1 == "text-color" || keyword1 == "Text-color" || keyword1 == "Text-Color" || keyword1 == "text-Color")
+			{
+				this.dataStructure.setTextColor(keyword2);
+			}
+			
 		}//End of if name == array
+		
 	return this;
 	}//End of attr function
 
@@ -286,6 +296,8 @@ function test(){
 
 
 //********************BELOW THIS ARE NON MEMBER FUNCTIONS OF THE API TO HELP VISUALIZE THE ARRAY********************
+
+//A function used to determine if two arrays are the same
 function arraysEqual(arr1, arr2) {
     if(arr1.length !== arr2.length)
         return false;
@@ -297,6 +309,8 @@ function arraysEqual(arr1, arr2) {
     return true;
 }
 
+//A function to visualize the array
+//NOTE: Contains two variations - (1) Horizontal visualization (2) Vertical visualization
 function visualizeArray(object){
 	
 	get_XY(object);
@@ -307,15 +321,15 @@ function visualizeArray(object){
                 object.canvas.selectAll("svg")
                     .data([1])
                     .enter()
-                    .append("rect")
-                    .attr("width", object.dataStructure.indexWidth)
-                    .attr("height", object.dataStructure.indexHeight)
-                    .attr("y", object.dataStructure.y)
-                    .attr("x", i * object.dataStructure.indexWidth)
-                    .attr("fill", "white")
-                    .attr("class", "shape")
-                    .attr("stroke-width", 2)
-                    .attr("stroke", "black");
+                    .append("rect")											//Appends a rectangle to the canvas
+                    .attr("width", object.dataStructure.indexWidth)			//Sets the width of each rectangle
+                    .attr("height", object.dataStructure.indexHeight)		//Sets the height of each rectangle
+                    .attr("y", object.dataStructure.y)						//Sets the y coordinate
+                    .attr("x", i * object.dataStructure.indexWidth)			//Sets the x coordinate
+                    .attr("fill", object.dataStructure.indexColor)		//Sets the background color of each rectangle
+                    .attr("class", "shape")									//Sets a class name for each rectangle
+                    .attr("stroke-width", 2)								//Sets the border-width of each rectangle
+                    .attr("stroke", "black");								//Sets the color of the border
 
                 object.canvas.selectAll("svg")
                     .data([1])
@@ -326,7 +340,8 @@ function visualizeArray(object){
 					.attr("id", "rectWrap" + i)
                     .attr("y", object.dataStructure.y)
                     .attr("x", i * object.dataStructure.indexWidth)
-                     .attr("text-anchor", "middle");
+					.attr("fill", object.dataStructure.textColor)
+                    .attr("text-anchor", "middle");
             }//end of for loop
 	}
 	
@@ -341,7 +356,7 @@ function visualizeArray(object){
                     .attr("height", object.dataStructure.indexHeight)
                     .attr("y", object.dataStructure.indexHeight * i)
                     .attr("x", object.dataStructure.x)
-                    .attr("fill", "white")
+                    .attr("fill", object.dataStructure.indexColor)
                     .attr("class", "shape")
                     .attr("stroke-width", 2)
                     .attr("stroke", "black");
@@ -355,7 +370,8 @@ function visualizeArray(object){
 					.attr("id", "rectWrap" + i)
                     .attr("y", object.dataStructure.indexHeight * i)
                     .attr("x", object.dataStructure.x)
-                     .attr("text-anchor", "middle");
+					.attr("fill", object.dataStructure.textColor)
+                    .attr("text-anchor", "middle");
             }//end of for loop
 	}
 	
