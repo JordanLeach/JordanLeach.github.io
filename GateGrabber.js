@@ -597,9 +597,12 @@ function draw(time) {
 
 
     if (player.lives == 0) {
-        ctx.fillText("GAME OVER", (canvas.width/2)-50, canvas.height/2);
-        ctx.fillText("You've scored "+player.score+" points", (canvas.width/2)-50,(canvas.height/2)+25);
+        ctx.textAlign="center";
+        ctx.fillText("GAME OVER", (canvas.width/2), canvas.height/2);
+        ctx.fillText("You've scored "+player.score+" points", (canvas.width/2),(canvas.height/2)+25);
+        loadEndMenu();
         pause();
+        ctx.textAlign="start"
     }
 
 
@@ -622,6 +625,20 @@ function loadMainMenu(){
     for(i=0; i<temp.length; ++i){
         temp[i].style.display = "inline";
     }
+}
+
+function loadEndMenu(){
+    //clear all user interface elements
+    var temp = document.getElementsByClassName("ui");
+    for(i=0; i<temp.length; ++i){
+        temp[i].style.display = "none";
+    }
+    //load all relevant user interface elements
+    temp = document.getElementsByClassName("endGame");
+    for(i=0; i<temp.length; ++i){
+        temp[i].style.display = "inline";
+    }
+
 }
 
 function newGame(){
