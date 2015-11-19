@@ -129,9 +129,9 @@ document.addEventListener("keyup", keyUpHandler, false);
 
 //Sound objects
 
-var collection = new Audio("../Sounds/Collection.mp3");
-var miss = new Audio("../Sounds/Miss.mp3");
-var music = new Audio('../Sounds/Music.mp3');
+var collection = new Audio("Resources/Sounds/Collection.mp3");
+var miss = new Audio("Resources/Sounds/Miss.mp3");
+var music = new Audio('Resources/Sounds/Music.m4a');
 var mute = false;
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
