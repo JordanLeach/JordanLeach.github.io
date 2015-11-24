@@ -86,6 +86,35 @@ header {
 	position: absolute;
 }
 
+.endGame {
+	position: absolute;
+}
+
+.options{
+    position: absolute;
+}
+
+#endm{
+	bottom: 140px;
+	left: 175px;
+	width: 180px;
+	height: 50px;
+}
+
+#replay{
+	bottom: 200px;
+	left: 175px;
+	width: 180px;
+	height: 50px;
+}
+
+#back{
+    bottom: 1px;
+    left: 26px;
+    width: 50px;
+    height: 30px;
+}
+
 #howTo{
 	bottom: 240px;
 	left: 175px;
@@ -100,6 +129,18 @@ header {
 	height: 50px;
 }
 
+#option{
+    bottom: 180px;
+    left: 175px;
+    width: 180px;
+    height: 50px;
+}
+
+#opt{
+    bottom: 300px;
+    left: 75px;
+    width: 250px;
+}
 
 #menuLogo{
 	bottom: 380px;

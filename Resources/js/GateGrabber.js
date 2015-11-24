@@ -133,6 +133,10 @@ var collection = new Audio("../Sounds/Collection.mp3");
 var miss = new Audio("../Sounds/Miss.mp3");
 var music = new Audio('../Sounds/Music.mp3');
 var mute = false;
+var bgm = document.getElementById("bgm");
+var sfx = document.getElementById("sfx");
+
+
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
         rightPressed = true;
@@ -535,6 +539,14 @@ music.addEventListener('ended', function() {
     this.play();
 }, false);
 
+bgm.addEventListener("change", function(){
+    music.volume =bgm.value / 100;
+});
+
+sfx.addEventListener("change", function(){
+    collection.volume = sfx.value/100;
+    miss.volume = sfx.value/100;
+});
 music.play();
 
 //   pause() -> this function changes the value of the variable playing (causing the game to pause)
@@ -612,6 +624,19 @@ function draw(time) {
         requestAnimationFrame(draw);
     }
 
+}
+
+function loadoptions(){
+    //clear all user interface elements
+    var temp = document.getElementsByClassName("ui");
+    for(i=0; i<temp.length; ++i){
+        temp[i].style.display = "none";
+    }
+    //load all relevant user interface elements
+    temp = document.getElementsByClassName("options");
+    for(i=0; i<temp.length; ++i){
+        temp[i].style.display = "inline";
+    }
 }
 
 function loadMainMenu(){
