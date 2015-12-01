@@ -48,14 +48,29 @@ header {
      width: 100%;
 	background-image: url('Resources/Background/header-bg.jpg')
  }
+ 
+.statuses{
+	position: absolute;
+	color: #ED1809;
+}
 
+#framesPerSecond{
+	bottom: 570px;
+	left: 28px;
+}
 
-/** {
-	padding: 0;
- 	margin: 0;
- }*/
+#score{
+	bottom: 552px;
+	left: 28px;
+}
+
+#lives{
+	bottom: 534px;
+	left: 28px;
+}
+
 #myCanvas {
-	background: url(../Background/test2.jpg);
+	background: url(../Background/background.png);
 	display: block; 
 	margin: 0 auto;
 }
@@ -109,7 +124,10 @@ header {
 }
 
 #quitButton{
-	float: right;
+	height: 25px;
+	position: absolute;
+	left: 460px;
+	bottom: 562px;
 }
 
 .ui{
@@ -119,10 +137,14 @@ header {
 
 .mainMenu{
 	position: absolute;
+	font-size:24px;
+	width: 180px;
+  height: 55px;
 }
 
 .endGame {
 	position: absolute;
+	font-size: 24px;
 }
 
 .options{
@@ -161,6 +183,24 @@ header {
 	width: 180px;
 	height: 50px;
 }
+
+#gameOverText{
+	bottom: 400px;
+	left: 0px;
+	width: 530px;
+	font-size: 55px;
+	text-align: center;
+	/*color: #FF0000;*/
+}
+
+#gameOverScore{
+	bottom: 335px;
+	left: 0px;
+	width: 530px;
+	text-align: center;
+	/*color: #FF0000;*/
+}
+
 #back{
 	bottom: 1px;
     left: 26px;
@@ -169,23 +209,24 @@ header {
 }
 #mainMenu_Options{
     bottom: 110px;
-    left: 215px;
-    height: 30px;
+    left: 203px;
+    height: 40px;
+		width: 124px;
 }
 
 #mainMenu_HowTo{
-    bottom: 40px;
-    left: 220px;
-    height: 30px;
-	width: 90px;
+    bottom: 38px;
+    left: 203px;
+    height: 40px;
+		width: 124px;
 }
 
 
 #mainMenu_Controls{
-    bottom: 40px;
-    left: 220px;
-    height: 30px;
-	width: 90px;
+    bottom: 38px;
+    left: 203px;
+    height: 40px;
+		width: 124px;
 }
 
 
@@ -257,31 +298,24 @@ header {
 
 
 #howTo{
-	bottom: 240px;
+	bottom: 225px;
 	left: 175px;
-	width: 180px;
-	height: 50px;
+	
 }
 
 #play{
 	bottom: 300px;
 	left: 175px;
-	width: 180px;
-	height: 50px;
 }
 
 #controls_MainMenu{
-	bottom: 180px;
+	bottom: 150px;
     left: 175px;
-    width: 180px;
-    height: 50px;
 }
 
 #option{
-    bottom: 120px;
+    bottom: 75px;
     left: 175px;
-    width: 180px;
-    height: 50px;
 }
 
 #opt{
