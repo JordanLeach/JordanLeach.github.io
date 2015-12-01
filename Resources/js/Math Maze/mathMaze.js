@@ -228,12 +228,12 @@ function drawAnswers(){
 
 function draw(){
 		clear();
-		//ctx2.fillStyle = "purple";
+		ctx2.fillStyle = "#6b2bab";
 		rect(player_x, player_y, 15,15);	
 		//Create a new equation if the user has answered
 
 		drawEquation();						//Draws the equation to the screen
-	
+		ctx2.fillStyle = "black";
 		drawAnswers();
 
 		ctx2.fillText("Hit:", 395, 10);
