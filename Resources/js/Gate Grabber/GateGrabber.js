@@ -626,6 +626,32 @@ function draw(time) {
 
 }
 
+function loadControls(){
+    //clear all user interface elements
+    var temp = document.getElementsByClassName("ui");
+    for(i=0; i<temp.length; ++i){
+        temp[i].style.display = "none";
+    }
+    //load all relevant user interface elements
+    temp = document.getElementsByClassName("controls");
+    for(i=0; i<temp.length; ++i){
+        temp[i].style.display = "inline";
+    }
+}
+
+function loadHowToPlay(){
+    //clear all user interface elements
+    var temp = document.getElementsByClassName("ui");
+    for(i=0; i<temp.length; ++i){
+        temp[i].style.display = "none";
+    }
+    //load all relevant user interface elements
+    temp = document.getElementsByClassName("howToPlay");
+    for(i=0; i<temp.length; ++i){
+        temp[i].style.display = "inline";
+    }
+}
+
 function loadoptions(){
     //clear all user interface elements
     var temp = document.getElementsByClassName("ui");
@@ -677,7 +703,7 @@ function newGame(){
     for(i=0; i<temp.length; ++i){
         temp[i].style.display = "inline";
     }
-    //reset game variables..... need to add more to these once quit/restart button is done.
+    //reset game variables
     player = { lives:['L','L','L','L','L','L','L','L','L','L'], score:0, value:1};
     		gate1 = { need: 0, x:(canvas.width/4), y:-200, type:3, rate: Math.floor((Math.random() * 4) +1)};
     		gate2 = { need: 1, x:(2*(canvas.width/4)), y:-200, type:14, rate: Math.floor((Math.random() * 4) +1)};

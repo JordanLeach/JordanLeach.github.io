@@ -1,53 +1,100 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
     <title>API Information</title>
-    <link rel="stylesheet" href="../../style.css" type="text/css" />
-</head>
 
-<header>
-	<h4>Purple Cobras Capstone</h4>
+        <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="navbar-fixed-top.css" rel="stylesheet">
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-	<ul id ="menu">
-	  	<li><a href="../../index.html">Home</a></li>
-  		<li><span><a href="#games">Games</a></span>
-  		 		<ul class="dropdown">
-                	<li><a href="version 1.0.html">Gate Grabber</a></li> 
-                	<ul>
-						<li><a href="LogicGateLesson.html">Logic Gate Lesson</a></li>
-					</ul>               	
-       			</ul>
-       			</li>	  	
-  		<li><span><a href="#info">Information</a></span>
-  		 		<ul class="dropdown">
-                	<li><a href="GateGrabberInfo.html">Gate Grabber</a></li>
-                	<li><a href="APIInfo.html">API</a></li>
-                	
-       			</ul>
-       			</li>
-  		<li><a href="#about">About</a></li>
-	</ul>
-</header>
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-<body>
+  </head>
 
-	<h1>API Information</h1>
+  <body>
 
-    <p>
-    <pre>
-    	1) 	Visualize the content of the array lives
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Purple Cobras</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="../../index.html">Home</a></li>
+            
+            
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+        	<li><a href="#">About Purple Cobras</a></li>
+            <li><a href="APIInfo.html">About API</a></li>
+            </ul>
+            </li>
+            
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Games<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="version 1.0.html">Gate Grabber</a></li>
+                <li><a href="mathMaze.html">Math Maze</a></li>
+              <!--->  <li role="separator" class="divider"></li>
+               	 <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li> <!-->
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <!-- <li><a href="#">Optional</a></li> <!-->
 
-        2) 	Visualize the speeds of the three gates. <br>
-		Use the lengths of the bars to represent the speeds of the gates. <br>
-		The longer the bar is, the faster the gate is moving. <br>
-        	<!--Use different colors to represent different speeds: <br>-->
-        	<!--Green means the speed is 1. <br>-->
-        	<!--Blue means the speed is 2. <br>-->
-        	<!--Yellow means the speed is 3. <br>-->
-        	<!--Pink means the speed is 4. <br>-->
-        	<!--Red means the speed is 5. <br>-->
-        </pre>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+<br><br>
+<br>
+	<h5>API Information</h5>
+
+	<p>1) 	Visualize the content of the array that stores player lives</p> </ul>
+	<p>2) 	Visualize the speeds of the three gates.
+			<li>Use the lengths of the bars to represent the speeds of the gates. <br> </li>
+			<li>The longer the bar is, the faster the gate is moving. <br> </li>
+		
     </p>
 
-</body>
+
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../bootstrap/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>
+
+

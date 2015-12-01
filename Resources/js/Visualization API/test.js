@@ -114,7 +114,7 @@ function test(){
         this.canvasLocation = node;
         this.locationWidth = $(node).width();	//Calculates the width of the specified location
         this.locationHeight = $(node).height(); //Calculates the height of the specified location
-        console.log("in location 1)size of canvas: " + this.locationWidth + " " + this.locationHeight);
+        //console.log("in location 1)size of canvas: " + this.locationWidth + " " + this.locationHeight);
         return this;
     }
 
@@ -401,7 +401,6 @@ function visualizeArray(object){
                     .resize(true)  //Automatically resizes the text to fit the shape
                     .draw();
             }
-	
 }//End of visualizeArray function
 
 function get_XY(object){

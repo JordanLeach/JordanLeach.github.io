@@ -7,18 +7,19 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <title>API Information</title>
+    <!--<link rel="icon" href="../../favicon.ico">
+    <title>Logic Gate Lesson</title>
 
         <!-- Bootstrap core CSS -->
     <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!--<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="navbar-fixed-top.css" rel="stylesheet">
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <!--<script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
 
 	<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
 
   </head>
 
@@ -39,7 +40,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="../../index.html">Home</a></li>
-            
+     
             
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span></a>
@@ -53,7 +54,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Games<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="version 1.0.html">Gate Grabber</a></li>
-                <li><a href="mathMaze.html">Math Maze</a></li>
+                <li><a href="#">Math Maze</a></li>
               <!--->  <li role="separator" class="divider"></li>
                	 <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li> <!-->
@@ -71,23 +72,33 @@
     <div class="container">
 
 <br><br>
-<br>
-	<h5>Gate Grabber Information</h5>
 
-	<p>This puzzle game is based on logic gate functionality. In this game the player will choose an input (0 or 1) that will satisfy the
-				gate that is on the screen. Each gate will have 2 inputs, 1 given and 1 from player, and 1 output. There is the possibility for gates that
-				do not have a correct answer.  </p>
-	<p>When the game starts, there are 3 gates that fall at the same rate. Each gate will reset when the player provides an input or the gate
-				reaches the end of the screen. From now on, each gate will fall a random rate of speed. When the gate responds, the type of gate is randomly
-				selected.</p>
-	<p>If the player provides the correct value to satisfy the gate, the player receives 100 points. If the player provides an incorrect value to
-				the gate, the player will lose a life. The player starts off with 10 lives and 0 points. The game ends when the player has 0 lives left.</p>
-				
-	<p>For help on logic gates, click <a href="LogicGateLesson.html">here</a>!</p>
+<div id="answersDiv"> </div>
 
+<div id="equationDiv"> </div>
+
+<div id="mazeDiv">
+	<canvas id="maze" width="396" height="394"></canvas>
+</div>
+
+<div id="functionDiv"> 
+	<canvas id="function" width="160" height="30"></canvas>
+</div>
 
 
-    </div> <!-- /container -->
+<script src="../js/Visualization API/Resources/d3.min.js"></script>
+<script src="../js/Visualization API/Resources/d3plus.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="../js/Visualization API/test.js"></script>
+<script src="../js/Math Maze/algebra.js"></script>
+<script src="../js/Math Maze/mathMaze.js"></script>
+<!--
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+-->
+
+
+</div> <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -97,8 +108,6 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../bootstrap/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
   </body>
 </html>
-
-
