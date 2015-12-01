@@ -79,16 +79,16 @@
     So for example, "mainMenu_Controls" will take you to the main menu from the controls screen. -->
 <div id="gameDiv"> 
 <canvas id="myCanvas" width="480" height="600"></canvas>
-<button type="button" id="quitButton" class="ui inGame"onclick="quitGame()">Quit</button> 
-<button type="button" id="play" class="ui mainMenu" onclick="newGame()">Play!</button>
-<button type="button" id="howTo" class="ui mainMenu" onclick="loadHowToPlay()">How to Play</button>
-<button type="button" id="option" class="ui mainMenu" onclick="loadoptions()">Options</button>
-<button type="button" id="replay" class="ui endGame" onclick="newGame()">Replay</button>
-<button type="button" id="endm" class="ui endGame" onclick="quitGame()">Main Menu</button>
-<button type="button" id="mainMenu_Options" class="ui options" onclick ="loadMainMenu()">Main Menu</button>
-<button type="button" id="mainMenu_HowTo" class="ui howToPlay" onclick ="loadMainMenu()">Main Menu</button>
-<button type="button" id="mainMenu_Controls" class="ui controls" onclick ="loadMainMenu()">Main Menu</button>
-<button type="button" id="controls_MainMenu" class="ui mainMenu" onclick ="loadControls()">Controls</button>
+<button type="button" id="quitButton" class="ui inGame buttons"onclick="quitGame()">Quit</button> 
+<button type="button" id="play" class="ui mainMenu buttons" onclick="newGame()">Play!</button>
+<button type="button" id="howTo" class="ui mainMenu buttons" onclick="loadHowToPlay()">How to Play</button>
+<button type="button" id="option" class="ui mainMenu buttons" onclick="loadoptions()">Options</button>
+<button type="button" id="replay" class="ui endGame buttons" onclick="newGame()">Replay</button>
+<button type="button" id="endm" class="ui endGame buttons" onclick="quitGame()">Main Menu</button>
+<button type="button" id="mainMenu_Options" class="ui options buttons" onclick ="loadMainMenu()">Main Menu</button>
+<button type="button" id="mainMenu_HowTo" class="ui howToPlay buttons" onclick ="loadMainMenu()">Main Menu</button>
+<button type="button" id="mainMenu_Controls" class="ui controls buttons" onclick ="loadMainMenu()">Main Menu</button>
+<button type="button" id="controls_MainMenu" class="ui mainMenu buttons" onclick ="loadControls()">Controls</button>
 <form id="opt" class ="ui options">
     Background Music
     <br>
@@ -108,9 +108,21 @@
 	Welcome to Gate Grabber!
 </form>
 
+<form id="gameOverText" class ="ui endGame">
+GAME OVER!
+</form>
+<form id="gameOverScore" class ="ui endGame">
+</form>
+<form id="framesPerSecond" class ="ui inGame statuses">
+</form>
+<form id="score" class ="ui inGame statuses">
+</form>
+<form id="lives" class ="ui inGame statuses">
+</form>
+
 <form id="gameDescription" class ="ui howToPlay">
-	Gate grabber is a game that is based on the concepts of basic Boolean logic gates. The goal of the game is to collect as many of the gates as you can 
-	by inputting the value that results them to evaluate to a logical 1, or "true". When a gate is collected and the input evaluates to a 1 you will recieve points.
+	Gate Grabber is a game that is based on the concepts of basic Boolean logic gates. The goal of the game is to collect as many of the gates as you can 
+	by inputting the value that causes them to evaluate to a logical 1, or "true". When a gate is collected and the input evaluates to a 1 you will recieve points.
 	However, collecting a gate that evaluates to a logical 0, or "false" will cause you to lose a life. There is no penalty for not collecting all the gates, only for 
 	inputting incorrect answers.
 </form>
