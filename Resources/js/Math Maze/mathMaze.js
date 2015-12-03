@@ -339,7 +339,7 @@ function checkForAnswer(){
 		temp2 = possibleAnswers[1].toString(),
 		temp3 = possibleAnswers[2].toString(),
 		temp4 = possibleAnswers[3].toString();
-
+/*
 	console.log("Player x = " ,player_x);
 	console.log("Player y = " ,player_y);
 	console.log("PossAnswer 1 = " ,maze3_x[possAnswer1-1], " ", maze3_y[possAnswer1-1]);
@@ -347,7 +347,7 @@ function checkForAnswer(){
 	console.log("PossAnswer 3 = " ,maze3_x[possAnswer3-1], " ", maze3_y[possAnswer3-1]);
 	console.log("PossAnswer 4 = " ,maze3_x[possAnswer4-1], " ", maze3_y[possAnswer4-1]);
 	//console.log(possAnswer1);
-		
+*/		
 	if(maze_type == 1){ 
 		if(((player_x <= maze1_x_fraction[possAnswer1-1] && player_x+16 >= maze1_x_fraction[possAnswer1-1] ) && 		
 		(player_y <= maze1_y_fraction[possAnswer1-1] && player_y+16 >= maze1_y_fraction[possAnswer1-1])) ||
@@ -558,7 +558,7 @@ function find_Possible_Answers_Coordinates(){
 			possAnswer4 = Math.floor(Math.random() * 11) + 1;
 		}
 		
-		console.log(possAnswer1, possAnswer2, possAnswer3, possAnswer4);
+		//console.log(possAnswer1, possAnswer2, possAnswer3, possAnswer4);
 	}//end of maze 1
 	
 	
@@ -582,7 +582,7 @@ function find_Possible_Answers_Coordinates(){
 			possAnswer4 = Math.floor(Math.random() * 9) + 1;
 		}
 		
-		console.log(possAnswer1, possAnswer2, possAnswer3, possAnswer4);
+		//console.log(possAnswer1, possAnswer2, possAnswer3, possAnswer4);
 	}//end of maze 2
 	
 }

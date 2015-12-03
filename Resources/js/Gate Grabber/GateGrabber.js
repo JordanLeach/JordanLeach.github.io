@@ -493,18 +493,21 @@ function checkCollision(){
 //
 function setUpScreen(time){
     var FPS = Math.floor(1000 / (time - previousFrameTime));
-    var fpsSTRING = FPS.toString();
+    //var fpsSTRING = FPS.toString();
+	document.getElementById("framesPerSecond").innerHTML = FPS + " FPS";
     previousFrameTime = time;
     ctx.font = "12px Verdana";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillText(fpsSTRING, 0, 10);
-    ctx.fillText("FPS", 20, 10);
-    ctx.fillText("Score:", 0, 30);
-    ctx.fillText(player.score, 40, 30);
-    ctx.fillText("Lives:", 0, 50);
-    ctx.fillText(player.lives.length, 40, 50);
-    ctx.fillText("Current Value:", 0, 600);
-    ctx.fillText(player.value, 95, 600);
+    //ctx.fillText(fpsSTRING, 0, 10);
+    //ctx.fillText("FPS", 20, 10);
+    //ctx.fillText("Score:", 0, 30);
+    //ctx.fillText(player.score, 40, 30);
+	document.getElementById("score").innerHTML = "Score: " + player.score;
+    //ctx.fillText("Lives:", 0, 50);
+    //ctx.fillText(player.lives.length, 40, 50);
+	document.getElementById("lives").innerHTML = "Lives: " + player.lives.length;
+    //ctx.fillText("Current Value:", 0, 600);
+    //ctx.fillText(player.value, 95, 600);
 }
 
 //changePlayerValue()
@@ -563,6 +566,7 @@ function pause(){
 }
 
 
+
 /*  draw()
  This is the main function that draws the screen which includes the three gates, ball, score, lives, and FPS. The rate that the screen is drawn at varries.This is what frames per second(FPS) is in the top corner of the screen.
 
@@ -586,7 +590,7 @@ function draw(time) {
 
     drawBall();
     ctx.fillStyle = "#FF0000";
-    ctx.fillText(player.value, ball.x - 4, ball.y + 2);
+    ctx.fillText(player.value, ball.x - 4, ball.y + 3);
 
 
     gate1.y = gate1.y + gate1.rate;
@@ -609,12 +613,14 @@ function draw(time) {
 
 
     if (player.lives == 0) {
-        ctx.textAlign="center";
-        ctx.fillText("GAME OVER", (canvas.width/2), canvas.height/2);
-        ctx.fillText("You've scored "+player.score+" points", (canvas.width/2),(canvas.height/2)+25);
+        //ctx.textAlign="center";
+        //ctx.fillText("GAME OVER", (canvas.width/2), canvas.height/2);
+        //ctx.fillText("You've scored "+player.score+" points", (canvas.width/2),(canvas.height/2)+25);
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		document.getElementById("gameOverScore").innerHTML = "You scored " + player.score + " points!";
         loadEndMenu();
         pause();
-        ctx.textAlign="start"
+        ctx.textAlign="start";
     }
 
 
@@ -676,6 +682,8 @@ function loadMainMenu(){
     for(i=0; i<temp.length; ++i){
         temp[i].style.display = "inline";
     }
+	
+	requestAnimationFrame(mainMenuAnimation);
 }
 
 function loadEndMenu(){
@@ -715,7 +723,8 @@ function newGame(){
     		while(gate3.rate == gate2.rate || gate3.rate == gate1.rate){
         			gate3.rate = Math.floor((Math.random() * 4) +1);
         		}
-
+	
+	
     //start the game
     		paused = false;
     requestAnimationFrame(draw);
@@ -723,8 +732,13 @@ function newGame(){
 
 	function quitGame(){
     		paused = true;
-    		ctx.clearRect(0, 0, canvas.width, canvas.height);
+    		requestAnimationFrame(clearscreen);
     		loadMainMenu();
     	}
+
+		function clearscreen(){
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+		}
+		
 // V Main Event Loop V   <- this is what runs "sequentially" after everything has been loaded; good starting point for trying to figure out whats going on
 loadMainMenu();
