@@ -35,12 +35,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Purple Cobras</a>
+          <a class="navbar-brand" href="../../index.html">Purple Cobras</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="../../index.html">Home</a></li>
-           
             
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span></a>
@@ -54,7 +53,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Games<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="version 1.0.html">Gate Grabber</a></li>
-                <li><a href="mathMaze.html">Math Maze </a></li>
+                <li><a href="mathMaze.html">Math Maze</a></li>
               <!--->  <li role="separator" class="divider"></li>
                	 <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li> <!-->
@@ -111,13 +110,21 @@
 <form id="gameOverText" class ="ui endGame">
 GAME OVER!
 </form>
+
 <form id="gameOverScore" class ="ui endGame">
+
 </form>
+
 <form id="framesPerSecond" class ="ui inGame statuses">
+
 </form>
+
 <form id="score" class ="ui inGame statuses">
+
 </form>
+
 <form id="lives" class ="ui inGame statuses">
+
 </form>
 
 <form id="gameDescription" class ="ui howToPlay">
@@ -150,18 +157,35 @@ Hint: Not all gates have a possible correct answer!
 <img  id= "arrowKeys" src = "../MainMenu/arrowkeys.png" class="ui controls">
 <img  id= "mouseCursor" src = "../MainMenu/mousecursor.png" class="ui controls">
 <img  id= "leftClick" src = "../MainMenu/leftclick.png" class="ui controls">
+<img  id= "textBackground" src = "../MainMenu/textbackground.png" class="ui howToPlay">
+<img  id= "textBackground2" src = "../MainMenu/textbackground.png" class="ui controls">
+<img  id= "textBackground3" src = "../MainMenu/textbackground.png" class="ui options">
+
 
 </div>
-
 
 
 <div id = "speedDiv" >
-    <div id = "rate1Div" class =  "speedView" > </div>
-    <div id = "rate2Div" class =  "speedView" > </div>
-    <div id = "rate3Div" class =  "speedView" > </div>
+    <div id = "speedDivTop">
+        <div id = "dice1Div" class =  "diceView" >
+        </div>
+        <div id = "dice2Div" class =  "diceView" >
+        </div>
+        <div id = "dice3Div" class =  "diceView" >
+        </div>
+    </div>
+    <div id = "speedDivBottom">
+        <div id = "rate1Div" class =  "speedView" >
+        </div>
+        <div id = "rate2Div" class =  "speedView" >
+        </div>
+        <div id = "rate3Div" class =  "speedView" >
+        </div>
+    </div>
 </div>
 
-<img  id= "AND00x" src = "../Gates/and00x.png">
+
+        <img  id= "AND00x" src = "../Gates/and00x.png">
 <img  id= "AND0x0" src = "../Gates/and0x0.png">
 <img  id= "AND0x1" src = "../Gates/and0x1.png">
 <img  id= "AND01x" src = "../Gates/and01x.png">
@@ -181,8 +205,8 @@ Hint: Not all gates have a possible correct answer!
 <script src="../js/Visualization API/Resources/d3.min.js"></script>
 <script src="../js/Visualization API/Resources/d3plus.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script src="../js/Visualization API/test.js"></script>
-<script src="../js/Gate Grabber/GateGrabber.js"></script>
+<script src="../js/Visualization API/test.min.js"></script>
+<script src="../js/Gate Grabber/GateGrabber.min.js"></script>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
